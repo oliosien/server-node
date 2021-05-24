@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <button>Start spoofing</button>
+  <div>
+	  <p>
+		  <h3 id="status">
+
+		  </h3>
+		  <p id="data">
+
+		  </p>
+	  </p>
+  </div>
+</body>
+
+<script>
+	$(document).ready(function(){
+	  $("button").click(function(){
+		$.get("http://localhost:8080/api/auth/policies", function(data, status){
+		  //alert("Data: " + data + "\nStatus: " + status);
+		  $("#status").html(status);
+		  $("#data").html( JSON.stringify(data) );
+		});
+	  });
+	});
+</script>
+
+</html>
